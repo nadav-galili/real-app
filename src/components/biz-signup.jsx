@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import userService from "../services/userService";
 import { Redirect } from "react-router-dom";
 
-class Signup extends Form {
+class BizSignup extends Form {
   state = {
     data: { email: "", password: "", name: "" },
     errors: {},
@@ -22,11 +22,11 @@ class Signup extends Form {
 
   doSubmit = async () => {
     const data = { ...this.state.data };
-    data.biz = false;
+    data.biz = true;
     try {
       await http.post(`${apiUrl}/users`, data);
-      toast("A New account created");
-      this.props.history.replace("/signin");
+      await userService.login(data.email, data.password);
+      window.location = "/create-card";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         this.setState({ errors: { email: "Email is taken" } });
@@ -38,10 +38,10 @@ class Signup extends Form {
     if (userService.getCurrentUser()) return <Redirect to="/" />;
     return (
       <div className="container">
-        <PageHeader>Sign Up Page</PageHeader>
+        <PageHeader>Buissness Sign Up Page</PageHeader>
         <div className="row">
           <div className="col-12">
-            <p>You can signup for free!</p>
+            <p>You can signup for free and create your own card</p>
           </div>
         </div>
         <div className="row">
@@ -50,7 +50,7 @@ class Signup extends Form {
               {this.renderInput("email", "Email", "email")}
               {this.renderInput("password", "Password", "password")}
               {this.renderInput("name", "Name")}
-              {this.renderButton("Signup")}
+              {this.renderButton("Next")}
             </form>
           </div>
         </div>
@@ -59,4 +59,4 @@ class Signup extends Form {
   }
 }
 
-export default Signup;
+export default BizSignup;

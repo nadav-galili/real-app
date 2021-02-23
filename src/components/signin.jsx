@@ -5,6 +5,8 @@ import Form from "./common/form";
 import http from "../services/httpService";
 import { apiUrl } from "../config/config.json";
 import { toast } from "react-toastify";
+import userService from "../services/userService";
+import { Redirect } from "react-router-dom";
 
 class Signin extends Form {
   state = {
@@ -18,9 +20,18 @@ class Signin extends Form {
   };
 
   doSubmit = async () => {
-    console.log("dosubmit run");
+    const { email, password } = this.state.data;
+    try {
+      await userService.login(email, password);
+      window.location = "/";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        this.setState({ errors: { email: ex.response.data } });
+      }
+    }
   };
   render() {
+    if (userService.getCurrentUser()) return <Redirect to="/" />;
     return (
       <div className="container">
         <PageHeader>Sign In Page</PageHeader>
