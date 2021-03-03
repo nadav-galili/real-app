@@ -31,7 +31,7 @@ class Navbar extends Component {
                   About
                 </NavLink>
               </li>
-              {user && (
+              {user && user.biz && (
                 <li className="nav-item">
                   <NavLink className="nav-link" to="/my-cards">
                     My Cards
