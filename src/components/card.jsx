@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
+// import { deleteCard } from "../services/cardService";
 
-const Card = ({ card }) => {
+const Card = ({ card, removeCard }) => {
   return (
     <div className="col-md-6 col-lg-4 mt-3">
       <div className="card">
@@ -18,6 +20,22 @@ const Card = ({ card }) => {
             {card.bizPhone}
             <br />
             {card.bizAddress}
+          </p>
+          <p>
+            <Link to={`/my-cards/edit/${card._id}`}>
+              <i className="fas fa-edit mr-1"></i>
+              Edit Card
+            </Link>
+          </p>
+          <p>
+            <i className="fas fa-trash-alt mr-1 "></i>
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={removeCard}
+            >
+              Delete Card
+            </button>
           </p>
         </div>
       </div>

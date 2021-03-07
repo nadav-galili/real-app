@@ -54,7 +54,7 @@ class Navbar extends Component {
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/biz-signup">
-                      Buissness
+                      Business
                     </NavLink>
                   </li>
                 </React.Fragment>

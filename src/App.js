@@ -9,6 +9,8 @@ import Signin from "./components/signin";
 import Logout from "./components/logout";
 import BizSignup from "./components/biz-signup";
 import CreateCard from "./components/create-card";
+import EditCard from "./components/edit-card";
+// import DeleteCard from "./components/delete-card";
 import Mycards from "./components/my-cards";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -38,6 +40,12 @@ class App extends Component {
               component={CreateCard}
               biz={true}
             />
+            <ProtectedRoute
+              path="/my-cards/edit/:id"
+              component={EditCard}
+              biz={true}
+            />
+            <ProtectedRoute path="/my-cards/delete/:id" biz={true} />
             <ProtectedRoute path="/my-cards" component={Mycards} biz={true} />
             <Route path="/biz-signup" component={BizSignup} />
             <Route path="/logout" component={Logout} />

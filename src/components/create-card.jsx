@@ -41,7 +41,7 @@ class CreateCard extends Form {
   render() {
     return (
       <div className="container">
-        <PageHeader>Buissness registration form</PageHeader>
+        <PageHeader>Create card form</PageHeader>
         <div className="row">
           <div className="col-12">
             <p>Open business card</p>

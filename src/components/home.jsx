@@ -11,8 +11,7 @@ class Home extends Component {
         <div className="row">
           <div className="col-12">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa,
-              iste!
+              This is a demo site for creating and displaying business cards
             </p>
           </div>
         </div>

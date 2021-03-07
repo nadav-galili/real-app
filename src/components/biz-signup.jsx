@@ -38,7 +38,7 @@ class BizSignup extends Form {
     if (userService.getCurrentUser()) return <Redirect to="/" />;
     return (
       <div className="container">
-        <PageHeader>Buissness Sign Up Page</PageHeader>
+        <PageHeader>Business Sign Up Page</PageHeader>
         <div className="row">
           <div className="col-12">
             <p>You can signup for free and create your own card</p>
